@@ -1,18 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Button _startButton;
+    [SerializeField] private Button _exitButton;
+    
+   private void Start()
     {
-        
-    }
+        {
+            _startButton.onClick.AddListener(StartGameScene);
+            _exitButton.onClick.AddListener(ExitScene);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void StartGameScene()
+        {
+            SceneManager.LoadScene("GameMagicNumberUI");
+        }
+
+        private void ExitScene()
+        {
+            Application.Quit();
+        }
     }
+   
+
+   
 }
