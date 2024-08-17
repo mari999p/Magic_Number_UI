@@ -4,27 +4,37 @@ using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private Button _startButton;
     [SerializeField] private Button _exitButton;
-    
-   private void Start()
+
+    #endregion
+
+    #region Unity lifecycle
+
+    private void Start()
     {
         {
-            _startButton.onClick.AddListener(StartGameScene);
+            _startButton.onClick.AddListener(StartScene);
             _exitButton.onClick.AddListener(ExitScene);
         }
-
-        private void StartGameScene()
-        {
-            SceneManager.LoadScene("GameMagicNumberUI");
-        }
-
-        private void ExitScene()
-        {
-            Application.Quit();
-        }
     }
-   
 
-   
+    #endregion
+
+    #region Private methods
+
+    private void ExitScene()
+    {
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
+    }
+
+    private void StartScene()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    #endregion
 }

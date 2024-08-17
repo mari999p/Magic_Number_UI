@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/GameMagicNumberUI.unity
+    path: Assets/Scenes/GameScene.unity
     guid: 5b7de95ce75e51b4c8e931a6714226e9
   - enabled: 1
     path: Assets/Scenes/WinScene.unity

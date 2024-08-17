@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 269811440}
   - component: {fileID: 269811439}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text-Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 876621772}
   - component: {fileID: 876621771}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text-Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -854,6 +854,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef697305d15939547a3b53076c865769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startButton: {fileID: 1845208847}
+  _exitButton: {fileID: 1464555389}
 --- !u!4 &1142160493
 Transform:
   m_ObjectHideFlags: 0
@@ -1394,8 +1396,8 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 519420032}
   - {fileID: 1075828087}
   - {fileID: 1773910969}
   - {fileID: 1142160493}

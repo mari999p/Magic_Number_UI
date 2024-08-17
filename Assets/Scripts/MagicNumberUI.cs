@@ -1,56 +1,100 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MagicNumberUI : MonoBehaviour
 {
+    #region Variables
+
+    [Header("UI")]
     [SerializeField] private TMP_Text _guessLabel;
     [SerializeField] private TMP_Text _attemptLabel;
-    private int _magicNumber;
-    private int _guess;
-    private int _attempts;
+    [SerializeField] private Button _upButton;
+    [SerializeField] private Button _guessButton;
+    [SerializeField] private Button _downButton;
+    [Header("Counter")]
+    [SerializeField] private int _attempts;
+    [SerializeField] private int _guess;
+    [SerializeField] private int _magicNumber;
+
+    #endregion
+
     #region Unity lifecycle
 
     private void Start()
     {
-        _magicNumber = Random.Range(1, 101);
-        _guess = 50;
-        _attempts = 0;
+        StartGame();
+        _upButton.onClick.AddListener(Up);
+        _guessButton.onClick.AddListener(Guess);
+        _downButton.onClick.AddListener(Down);
         UpdateUI();
     }
 
-    public void Higner()
-    {
-        _guess++;
-        _attempts++;
-        CheckGuess();
-    }
+    #endregion
+
+    #region Private methods
 
     private void CheckGuess()
     {
-        if (_guess > _magicNumber)
+        if (_guess == _magicNumber)
         {
-            _guessLabel.text = "Уменьшите ваше число";
+            WinGame();
         }
-        else if (_guess < _magicNumber)
+        else if (_guess > _magicNumber)
         {
-            _guessLabel.text = "Увеличьте ваше число";
+            Debug.Log("Меньше!");
         }
         else
         {
-            WinScene();
+            Debug.Log("Больше!");
+        }
+
+        UpdateUI();
+    }
+
+    private void Down()
+    {
+        if (_guess > 1)
+        {
+            _guess--;
+            _attempts++;
+            CheckGuess();
         }
     }
 
-    private static void WinScene()
+    private void Guess()
     {
-        SceneManager.LoadScene("WinScene");
+        WinGame();
+    }
+
+    private void StartGame()
+    {
+        _magicNumber = Random.Range(1, 20);
+        _attempts = 0;
+        _guess = 10;
+    }
+
+    private void Up()
+    {
+        if (_guess < 20)
+        {
+            _guess++;
+            _attempts++;
+            CheckGuess();
+        }
     }
 
     private void UpdateUI()
     {
-        _guessLabel.text = $"Текущий guess: '{_guess}'";
-        _attemptLabel.text = $"Количество попыток: '{_attempts}'";
+        _guessLabel.text = $"Текущий предположение: {_guess}";
+        _attemptLabel.text = $"Количество попыток: {_attempts}";
     }
+
+    private static void WinGame()
+    {
+        SceneManager.LoadScene("WinScene");
+    }
+
     #endregion
 }
