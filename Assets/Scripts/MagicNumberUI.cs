@@ -83,11 +83,15 @@ public class MagicNumberUI : MonoBehaviour
             _attempts++;
             CheckGuess();
         }
+        else
+        {
+            Debug.Log("Вы достигли максимального значения!");
+        }
     }
 
     private void UpdateUI()
     {
-        _guessLabel.text = $"Текущий предположение: {_guess}";
+        _guessLabel.text = $"Текущее предположение: {_guess}";
         _attemptLabel.text = $"Количество попыток: {_attempts}";
     }
 
